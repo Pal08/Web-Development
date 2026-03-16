@@ -1,2 +1,3 @@
 # Web-Development
-I'm a passionate web developer focused on building modern, high-quality web applications and meaningful digital experiences. 
+I'm a passionate web developer focused on building modern, high-quality web applications and meaningful digital experience. 
+author=Pal Gandhi
