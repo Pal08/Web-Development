@@ -1,0 +1,508 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 – Web Development | Pal Gandhi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --red:#e50914;
+  --dark:#070707;
+  --card:#111;
+  --border:rgba(255,255,255,0.07);
+  --gray:#888;
+  --white:#efefef;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--dark);color:var(--white);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#000;}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
+ 
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 60px;
+  background:rgba(7,7,7,0.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--red);text-decoration:none;}
+.back-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:500;color:var(--gray);
+  text-decoration:none;
+  border:1px solid var(--border);padding:7px 16px;border-radius:4px;
+  transition:all .2s;cursor:pointer;
+}
+.back-link i{color:var(--red);}
+.back-link:hover{color:#fff;border-color:var(--red);}
+ 
+/* ── HERO ── */
+.hero{margin-top:60px;position:relative;height:460px;overflow:hidden;}
+.hero img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.42);
+  animation:hzoom 16s ease-in-out infinite alternate;
+}
+@keyframes hzoom{from{transform:scale(1);}to{transform:scale(1.07);}}
+.hero-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,#070707 0%,rgba(7,7,7,.55) 55%,transparent 100%);
+}
+.hero-content{position:absolute;bottom:44px;left:60px;z-index:2;}
+.mod-pill{
+  display:inline-block;background:var(--red);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:5px 13px;border-radius:3px;margin-bottom:14px;
+}
+.hero-title{font-family:'Syne',sans-serif;font-size:54px;font-weight:800;color:#fff;line-height:1.05;}
+.hero-sub{font-size:15px;color:#bbb;margin-top:10px;font-weight:400;}
+ 
+/* ── PAGE ── */
+.page{max-width:980px;margin:0 auto;padding:64px 40px 90px;}
+ 
+/* ── INTRO CARD ── */
+.intro-card{
+  background:var(--card);border:1px solid var(--border);
+  border-left:4px solid var(--red);border-radius:10px;
+  padding:28px 32px;margin-bottom:56px;
+  font-size:15px;color:#aaa;line-height:1.85;
+}
+ 
+/* ── SECTION ── */
+.sec{margin-bottom:56px;}
+.sec-head{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Syne',sans-serif;font-size:21px;font-weight:800;color:#fff;margin-bottom:6px;
+}
+.sec-head i{color:var(--red);}
+.sec-bar{width:34px;height:3px;background:var(--red);border-radius:2px;margin-bottom:26px;}
+ 
+/* ── DAY GRID ── */
+.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+ 
+/* ── REGULAR DAY CARD ── */
+.day-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.day-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(229,9,20,.5);
+  box-shadow:0 16px 40px rgba(0,0,0,.6);
+}
+.day-img-wrap{position:relative;overflow:hidden;height:148px;}
+.day-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.68);transition:transform .4s,filter .3s;display:block;
+}
+.day-card:hover .day-img-wrap img{transform:scale(1.07);filter:brightness(.9);}
+.day-label{
+  position:absolute;top:10px;left:10px;
+  background:var(--red);color:#fff;
+  font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;
+}
+.day-body{padding:16px 18px 20px;}
+.day-title{
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#fff;
+  margin-bottom:7px;padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.day-title a{color:#fff;text-decoration:none;transition:color .2s;}
+.day-title a:hover{color:var(--red);}
+.day-desc{font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;font-style:italic;}
+.day-points{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.day-points li{
+  font-size:12.5px;color:#999;line-height:1.5;
+  display:flex;align-items:flex-start;gap:9px;
+}
+.day-points li::before{
+  content:'';display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--red);flex-shrink:0;margin-top:5px;
+}
+ 
+/* ── DAY 7 FEATURED ── */
+.day-card.featured{
+  grid-column:1 / -1;
+  display:grid;grid-template-columns:360px 1fr;
+  background:linear-gradient(135deg,#141414,#0d0d0d);
+  border-color:rgba(229,9,20,.22);
+}
+.day-card.featured:hover{
+  transform:translateY(-4px);
+  border-color:rgba(229,9,20,.6);
+  box-shadow:0 22px 60px rgba(229,9,20,.1);
+}
+.day-card.featured .day-img-wrap{height:100%;min-height:220px;}
+.day-card.featured .day-img-wrap img{filter:brightness(.55);}
+.day-card.featured:hover .day-img-wrap img{filter:brightness(.85);}
+.day-card.featured .day-label{font-size:10px;padding:5px 14px;letter-spacing:3px;}
+.day-card.featured .day-body{
+  padding:30px 36px;display:flex;flex-direction:column;justify-content:center;
+}
+.featured-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(229,9,20,.1);border:1px solid rgba(229,9,20,.28);
+  color:var(--red);font-size:10px;font-weight:700;
+  letter-spacing:1.8px;text-transform:uppercase;
+  padding:5px 14px;border-radius:20px;margin-bottom:12px;width:fit-content;
+}
+.day-card.featured .day-title{font-size:22px;margin-bottom:6px;padding-bottom:13px;}
+.day-card.featured .day-desc{font-size:13px;color:#666;margin-bottom:18px;}
+.day-card.featured .day-points{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;
+}
+.day-card.featured .day-points li{font-size:13px;color:#aaa;}
+ 
+/* ── PROJECT ROWS ── */
+.project-row{
+  display:grid;grid-template-columns:280px 1fr;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;margin-bottom:16px;
+  transition:border-color .2s,transform .2s;
+}
+.project-row:hover{border-color:rgba(229,9,20,.4);transform:translateX(4px);}
+.project-row-img{
+  width:100%;height:100%;object-fit:cover;min-height:180px;
+  display:block;filter:brightness(.8);transition:filter .3s;
+}
+.project-row:hover .project-row-img{filter:brightness(1);}
+.project-row-body{padding:24px 28px;}
+.project-tag{
+  display:inline-block;background:rgba(229,9,20,.12);color:var(--red);
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 11px;border-radius:20px;margin-bottom:10px;
+}
+.project-row-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:8px;}
+.project-row-desc{font-size:13px;color:#777;line-height:1.7;margin-bottom:14px;}
+.ptags{display:flex;flex-wrap:wrap;gap:7px;}
+.ptag{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  color:#aaa;font-size:11px;padding:4px 11px;border-radius:20px;
+}
+ 
+/* ── TECH BADGES ── */
+.badge-wrap{display:flex;flex-wrap:wrap;gap:10px;}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:6px;padding:10px 16px;
+  font-size:13px;font-weight:500;color:#ccc;
+  transition:border-color .2s,color .2s;
+}
+.badge:hover{border-color:var(--red);color:#fff;}
+.badge i{color:var(--red);font-size:15px;}
+ 
+/* ── REFLECTION ── */
+.reflection-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:32px 36px;position:relative;overflow:hidden;
+}
+.reflection-box::before{
+  content:'"';position:absolute;top:-14px;left:14px;
+  font-size:150px;font-family:'Syne',sans-serif;
+  color:rgba(229,9,20,.06);line-height:1;pointer-events:none;
+}
+.reflection-box p{font-size:14px;color:#999;line-height:1.95;position:relative;z-index:1;}
+.reflection-box p strong{color:#fff;}
+ 
+/* ── BACK BTN ── */
+.btn-back{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;padding:13px 28px;border-radius:5px;
+  font-size:14px;font-weight:600;text-decoration:none;
+  transition:background .2s,transform .2s;margin-top:8px;
+  cursor:pointer;border:none;font-family:inherit;
+}
+.btn-back:hover{background:#ff1a1a;transform:translateY(-2px);}
+ 
+/* ── FOOTER ── */
+footer{
+  background:#000;border-top:1px solid var(--border);padding:22px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.fl{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--red);}
+.fc{font-size:12px;color:var(--gray);}
+ 
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.rv.in{opacity:1;transform:none;}
+ 
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  nav{padding:14px 20px;}
+  .hero-content{left:20px;bottom:24px;}
+  .hero-title{font-size:34px;}
+  .page{padding:44px 20px 70px;}
+  .day-grid{grid-template-columns:1fr 1fr;}
+  .day-card.featured{grid-template-columns:1fr;}
+  .day-card.featured .day-img-wrap{height:200px;}
+  .day-card.featured .day-points{grid-template-columns:1fr;}
+  .project-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:18px 20px;}
+}
+@media(max-width:540px){
+  .day-grid{grid-template-columns:1fr;}
+  .hero{height:300px;}
+  .hero-title{font-size:28px;}
+  .day-card.featured .day-body{padding:20px;}
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">FABLAB</a>
+  <a href="index.html" class="back-link" onclick="goBack(event)">
+    <i class="fa-solid fa-arrow-left"></i> Back to Modules
+  </a>
+</nav>
+ 
+<!-- HERO — code editor / programming workspace -->
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1800&q=85" alt="Web Development">
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <div class="mod-pill">Module — 01</div>
+    <h1 class="hero-title">Web Development</h1>
+    <p class="hero-sub">HTML · CSS · JavaScript · GitHub</p>
+  </div>
+</div>
+ 
+<!-- PAGE -->
+<div class="page">
+ 
+  <!-- INTRO -->
+  <div class="intro-card rv">
+    In this module I learned the core foundations of building websites — from structuring pages with HTML, styling with CSS, to adding interactivity with JavaScript. Each day of the FabLab session focused on a different concept, progressively building toward a complete To-Do List project deployed live on GitHub Pages.
+  </div>
+ 
+  <!-- DAY BY DAY -->
+  <div class="sec rv">
+    <div class="sec-head"><i class="fa-solid fa-calendar-days"></i> Day by Day</div>
+    <div class="sec-bar"></div>
+    <div class="day-grid">
+ 
+      <!-- DAY 1 — HTML tags: clean code / text editor -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80" alt="Day 1 – Basic HTML Tags">
+          <span class="day-label">Day 1</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass1.html">Basic HTML Tags</a></div>
+          <p class="day-desc">Introduction to the building blocks of every webpage — writing your very first HTML document.</p>
+          <ul class="day-points">
+            <li>Set up VS Code &amp; created first <code>.html</code> file</li>
+            <li>Used tags: <code>p, b, i, u, br, hr</code></li>
+            <li>Text effects with <code>marquee</code>, <code>sub</code>, <code>sup</code></li>
+            <li>Understood HTML document structure &amp; nesting</li>
+            <li>Practiced heading tags <code>h1–h6</code> &amp; paragraphs</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 2 — Images / Media / Tables: camera / gallery -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Day 2 – Image, Anchor, Media & Table">
+          <span class="day-label">Day 2</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass 2.html">Image, Anchor, Media &amp; Table</a></div>
+          <p class="day-desc">Embedding rich content and linking pages — making HTML truly interactive and visual.</p>
+          <ul class="day-points">
+            <li>Inserted images with <code>&lt;img&gt;</code> &amp; attributes</li>
+            <li>Created hyperlinks using <code>&lt;a href&gt;</code></li>
+            <li>Embedded video &amp; audio with <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code></li>
+            <li>Built structured data tables — rows, cols, colspan</li>
+            <li>Added table headers, borders &amp; captions</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 3 — Forms: keyboard / typing / input -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=600&q=80" alt="Day 3 – HTML Forms">
+          <span class="day-label">Day 3</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass 3.html">HTML Forms</a></div>
+          <p class="day-desc">Collecting user input — the gateway to dynamic and interactive web applications.</p>
+          <ul class="day-points">
+            <li>Built forms with <code>&lt;form&gt;</code>, <code>action</code>, <code>method</code></li>
+            <li>Input types: text, email, password, number, date</li>
+            <li>Used radio buttons, checkboxes &amp; dropdowns</li>
+            <li>Added <code>textarea</code>, <code>submit</code> &amp; <code>reset</code> buttons</li>
+            <li>Applied <code>label</code>, <code>placeholder</code> &amp; <code>required</code></li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 4 — Header/Nav/Footer/CSS: website layout / UI design -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="Day 4 – Header, Nav, Footer & CSS Selectors">
+          <span class="day-label">Day 4</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass 4.html">Header, Nav, Footer &amp; CSS Selectors</a></div>
+          <p class="day-desc">Structuring pages semantically and targeting elements with the full power of CSS.</p>
+          <ul class="day-points">
+            <li>Semantic tags: <code>header</code>, <code>nav</code>, <code>footer</code>, <code>main</code></li>
+            <li>CSS selectors: element, class <code>(.)</code>, ID <code>(#)</code></li>
+            <li>Pseudo-classes: <code>:hover</code>, <code>:first-child</code>, <code>:nth-child</code></li>
+            <li>Attribute selectors &amp; combinator selectors</li>
+            <li>Styled a full-page layout with nav &amp; footer</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 5 — Box Model / Flexbox: grid layout / design blocks -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80" alt="Day 5 – Box Model & Flexbox">
+          <span class="day-label">Day 5</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass 5.html">Box Model &amp; Flexbox</a></div>
+          <p class="day-desc">Mastering layout — understanding spacing and building flexible, responsive arrangements.</p>
+          <ul class="day-points">
+            <li>Box Model: <code>margin</code>, <code>border</code>, <code>padding</code>, <code>content</code></li>
+            <li><code>box-sizing: border-box</code> explained</li>
+            <li>Flexbox: <code>display:flex</code>, <code>flex-direction</code></li>
+            <li><code>justify-content</code>, <code>align-items</code>, <code>gap</code></li>
+            <li>Built a responsive card layout using Flexbox</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 6 — JavaScript: code on screen / dark terminal -->
+      <div class="day-card">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80" alt="Day 6 – JavaScript Basics">
+          <span class="day-label">Day 6</span>
+        </div>
+        <div class="day-body">
+          <div class="day-title"><a href="Ass6.js">JavaScript Basics &amp; All Operations</a></div>
+          <p class="day-desc">Bringing pages to life — writing logic, manipulating the DOM, and handling all core JS operations.</p>
+          <ul class="day-points">
+            <li>Variables: <code>var</code>, <code>let</code>, <code>const</code> &amp; data types</li>
+            <li>Arithmetic, comparison &amp; logical operators</li>
+            <li>Conditionals: <code>if/else</code>, <code>switch</code></li>
+            <li>Loops: <code>for</code>, <code>while</code>, <code>do-while</code></li>
+            <li>Functions, DOM selection &amp; event listeners</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <!-- DAY 7 — To-Do List: tasks / checklist / productivity — FEATURED -->
+      <div class="day-card featured">
+        <div class="day-img-wrap">
+          <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=900&q=85" alt="Day 7 – To-Do List Project">
+          <span class="day-label">Day 7</span>
+        </div>
+        <div class="day-body">
+          <div class="featured-badge"><i class="fa-solid fa-trophy"></i> Final Project</div>
+          <div class="day-title"><a href="Ass7.html">To-Do List Project</a></div>
+          <p class="day-desc">The culmination of everything — combining HTML, CSS, and JavaScript into one complete, deployed web application.</p>
+          <ul class="day-points">
+            <li>Built a full To-Do List app from scratch</li>
+            <li>Add, delete &amp; mark tasks as complete</li>
+            <li>Used <code>localStorage</code> to persist tasks on refresh</li>
+            <li>Applied HTML + CSS + JS together end-to-end</li>
+            <li>Pushed code to GitHub repository</li>
+            <li>Deployed live on GitHub Pages</li>
+          </ul>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- PROJECTS BUILT -->
+  <div class="sec rv">
+    <div class="sec-head"><i class="fa-solid fa-laptop-code"></i> Projects Built</div>
+    <div class="sec-bar"></div>
+ 
+    <!-- Portfolio — code on laptop / developer desk image -->
+    <div class="project-row">
+      <img class="project-row-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Developer Portfolio Website">
+      <div class="project-row-body">
+        <span class="project-tag">Portfolio</span>
+        <div class="project-row-title">Developer Portfolio Website</div>
+        <p class="project-row-desc">A Netflix-inspired personal portfolio showcasing all FabLab modules. Features animated hero, typewriter effect, scroll animations, and a fully responsive layout across all screen sizes.</p>
+        <div class="ptags">
+          <span class="ptag">HTML</span>
+          <span class="ptag">CSS</span>
+          <span class="ptag">JavaScript</span>
+          <span class="ptag">GitHub Pages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- TECHNOLOGIES -->
+  <div class="sec rv">
+    <div class="sec-head"><i class="fa-solid fa-wrench"></i> Technologies Used</div>
+    <div class="sec-bar"></div>
+    <div class="badge-wrap">
+      <div class="badge"><i class="fab fa-html5"></i> HTML</div>
+      <div class="badge"><i class="fab fa-css3-alt"></i> CSS</div>
+      <div class="badge"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="badge"><i class="fab fa-github"></i> GitHub</div>
+      <div class="badge"><i class="fa-solid fa-code"></i> VS Code</div>
+    </div>
+  </div>
+ 
+  <!-- REFLECTION -->
+  <div class="sec rv">
+    <div class="sec-head"><i class="fa-solid fa-pen-to-square"></i> My Reflection</div>
+    <div class="sec-bar"></div>
+    <div class="reflection-box">
+      <p>
+        This was my <strong>first real deep dive into web development</strong>. I had seen HTML before but never built anything complete from scratch. Working through this module day by day taught me how all three core technologies — HTML, CSS, and JavaScript — fit together to create a real working website.<br><br>
+        The biggest challenge was <strong>understanding the Box Model and Flexbox</strong>. Getting elements to space and align properly took a lot of trial and error, but once it clicked it felt like a superpower — I could finally control the layout of any page with confidence.<br><br>
+        Learning <strong>JavaScript on Day 6 was a turning point</strong>. Understanding variables, loops, functions, and DOM manipulation made me realize how much is possible with just vanilla JS — no libraries needed.
+      </p>
+    </div>
+  </div>
+ 
+  <!-- BACK -->
+  <div class="rv">
+    <button class="btn-back" onclick="goBack(event)">
+      <i class="fa-solid fa-arrow-left"></i> Back to All Modules
+    </button>
+  </div>
+ 
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="fl">Pal Gandhi</div>
+  <div class="fc">© 2026 Pal Gandhi &nbsp;·&nbsp; Module 1 – Web Development</div>
+</footer>
+ 
+<script>
+const o = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('in'); o.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => o.observe(el));
+ 
+function goBack(e) {
+  e.preventDefault();
+  sessionStorage.setItem('scrollTo', 'fablab');
+  window.location.href = 'protfolio1.html';
+}
+</script>
+</body>
+</html>
